@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
 int checkLogin(char *login, char *passwd);
 //accepted only if Length = 5 and a number 1 or more digits
 int checkValidPass(char *ps);
@@ -30,16 +29,17 @@ int checkValidPass(char *ps) {
 		if (isdigit(ps[i])){
 			number++;
 		}
-	if (number>0 && lenght == 5)
+		if (isupper(ps[i])){
+			upper++;
+		}
+	if (number>1 && upper >1 && lenght >= 5 && lenght <= 8 &&ps[0]!=48 && ps[0] !=57)
 		accepted = 1;
 		}
 	return accepted;
 }
 int checkLogin(char *login, char *passwd) {
-	if( !strcmp(login, "student1") && !strcmp(passwd, "mypa1"))
+	if( !strcmp(login, "student1") && !strcmp(passwd, "MYpa12"))
 		return 1;
 	else
 		return 0;
 }
-
-
