@@ -23,22 +23,28 @@ int main() {
 }
 int checkValidPass(char *ps) {
 	int accepted=0;
-	int i,number=0,upper=0;
+	int i,number=0,firstupper=0,unique=0;
 	int lenght = strlen(ps);
 	for (i=0;i<lenght;i++){
 		if (isdigit(ps[i])){
 			number++;
 		}
 		if (isupper(ps[i])){
-			upper++;
+			if (firstupper == '\0'){
+				firstupper = ps[i];
+				unique = 1;
+			}
+			else if (ps[i] != firstupper){
+				unique = 2;
+			}
 		}
-	if (number>1 && upper >1 && lenght >= 5 && lenght <= 8 &&ps[0]!=48 && ps[0] !=57)
+	if (number>1 && unique >1 && lenght >= 5 && lenght <= 8 &&ps[0]!=48 && ps[0] !=57)
 		accepted = 1;
 		}
 	return accepted;
 }
 int checkLogin(char *login, char *passwd) {
-	if( !strcmp(login, "student1") && !strcmp(passwd, "MYpa12"))
+	if( !strcmp(login, "student1") && !strcmp(passwd, "MMpa12"))
 		return 1;
 	else
 		return 0;
